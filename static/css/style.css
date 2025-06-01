@@ -1,0 +1,461 @@
+/* Import des polices */
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Press+Start+2P&family=VT323&display=swap ');
+
+/* Variables pour les couleurs */
+:root {
+    --green: #0f0;
+    --green-dark: #0a0;
+    --green-light: #5f5;
+    --red: #f00;
+    --yellow: #ff0;
+    --blue: #00f;
+    --black: #000;
+    --border-width: 2px;
+    --glow-intensity: 0.5;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--green);
+    font-family: 'VT323', monospace;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px),
+        radial-gradient(rgba(0, 255, 0, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    line-height: 1.6;
+    position: relative;
+    min-height: 100vh;
+}
+
+.glitch {
+    position: relative;
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #f00;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00f;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    10% { clip: rect(112px, 9999px, 76px, 0); }
+    20% { clip: rect(85px, 9999px, 77px, 0); }
+    30% { clip: rect(27px, 9999px, 97px, 0); }
+    40% { clip: rect(64px, 9999px, 98px, 0); }
+    50% { clip: rect(61px, 9999px, 85px, 0); }
+    60% { clip: rect(99px, 9999px, 114px, 0); }
+    70% { clip: rect(34px, 9999px, 115px, 0); }
+    80% { clip: rect(98px, 9999px, 129px, 0); }
+    90% { clip: rect(43px, 9999px, 96px, 0); }
+    100% { clip: rect(82px, 9999px, 64px, 0); }
+}
+
+@keyframes glitch-anim2 {
+    0% { clip: rect(65px, 9999px, 119px, 0); }
+    10% { clip: rect(120px, 9999px, 152px, 0); }
+    20% { clip: rect(14px, 9999px, 67px, 0); }
+    30% { clip: rect(133px, 9999px, 134px, 0); }
+    40% { clip: rect(115px, 9999px, 145px, 0); }
+    50% { clip: rect(147px, 9999px, 128px, 0); }
+    60% { clip: rect(8px, 9999px, 37px, 0); }
+    70% { clip: rect(36px, 9999px, 22px, 0); }
+    80% { clip: rect(147px, 9999px, 162px, 0); }
+    90% { clip: rect(126px, 9999px, 189px, 0); }
+    100% { clip: rect(38px, 9999px, 42px, 0); }
+}
+
+@keyframes scan {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+
+/* Terminal styles */
+.terminal {
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #00ff00;
+    padding: 1.5rem;
+    border-radius: 5px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    position: relative;
+    overflow: hidden;
+    font-family: monospace;
+    transition: all 0.3s ease;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal:hover {
+    box-shadow: 0 0 25px rgba(0, 255, 0, 0.9);
+    transform: translateY(-3px) scale(1.01);
+    border-color: #00ff99;
+}
+
+.terminal::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--green), transparent);
+    opacity: 0.7;
+}
+
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(0, 255, 0, 0.3);
+    opacity: 0.7;
+    animation: scan 8s linear infinite;
+    pointer-events: none;
+}
+
+/* Terminal cards */
+.terminal-card {
+    padding: 1rem;
+    border: var(--border-width) solid var(--green);
+    margin-bottom: 1.5rem;
+    background-color: rgba(0, 20, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal-card:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.terminal-card h3 {
+    font-size: 1.1rem;
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.terminal-card .value {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.7);
+}
+
+.terminal-card .unit {
+    color: var(--green);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.terminal-card .debt {
+    color: var(--red);
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+}
+
+.terminal-card .exchange {
+    color: var(--yellow);
+    text-shadow: 0 0 5px rgba(255, 255, 0, 0.7);
+}
+
+/* Progress bars */
+.progress-container {
+    position: relative;
+    margin-top: 0.75rem;
+    height: 1rem;
+    background-color: rgba(0, 50, 0, 0.3);
+    border: 1px solid var(--green);
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: rgba(0, 255, 0, 0.2);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    background: linear-gradient(90deg, var(--green-dark), var(--green));
+    height: 100%;
+    position: relative;
+    transition: width 0.5s ease-in-out;
+    box-shadow: 0 0 10px var(--green);
+}
+
+.value {
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+}
+
+.value:hover {
+    text-shadow: 0 0 5px var(--green);
+}
+
+.glow-text {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(0, 255, 0, 0.9), 0 0 20px rgba(0, 255, 0, 0.4);
+    }
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: progress-shine 2s infinite;
+}
+
+@keyframes progress-shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Footer */
+.terminal-footer {
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.terminal-footer p {
+    color: var(--green);
+    margin-bottom: 1rem;
+    font-family: 'VT323', monospace;
+}
+
+.terminal-footer .timestamp {
+    font-size: 0.875rem;
+}
+
+.terminal-footer .links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.terminal-footer a {
+    color: var(--green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.terminal-footer a:hover {
+    color: var(--green-light);
+}
+
+.terminal-footer i {
+    font-size: 1.25rem;
+}
+
+.typewriter {
+    overflow: hidden;
+    border-right: .15em solid #0f0;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #0f0; }
+}
+
+.hacked-stamp {
+    position: absolute;
+    transform: rotate(-15deg);
+    font-size: 3rem;
+    color: #f00;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    opacity: 0.8;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.matrix-rain, #matrix-rain-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Garantir que la pluie reste en arrière-plan */
+    pointer-events: none; /* Permettre les interactions avec les éléments en dessous */
+    opacity: 0.5; /* Meilleure visibilité */
+}
+
+.katakana-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.katakana-rain div {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Styles pour l'affichage des sources de données */
+.data-sources-container {
+    background-color: rgba(0, 20, 0, 0.7);
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.data-sources-title {
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.data-source {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-left: 3px solid #00ff00;
+    background-color: rgba(0, 40, 0, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.data-source.fallback {
+    border-left-color: #ff0000;
+    background-color: rgba(40, 0, 0, 0.3);
+}
+
+.data-source span {
+    color: #00ff00;
+    font-weight: bold;
+}
+
+.data-source.fallback span {
+    color: #ff5555;
+}
+
+/* Badge pour indiquer la source */
+.api-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8em;
+    margin-left: 8px;
+    font-weight: bold;
+}
+
+.api-badge.api {
+    background-color: rgba(0, 255, 0, 0.2);
+    color: #00ff00;
+    border: 1px solid #00ff00;
+}
+
+.api-badge.local {
+    background-color: rgba(255, 255, 0, 0.2);
+    color: #ffff00;
+    border: 1px solid #ffff00;
+}
+
+.api-badge.fallback {
+    background-color: rgba(255, 0, 0, 0.2);
+    color: #ff5555;
+    border: 1px solid #ff5555;
+}
+
+/* Indicateur de dernière mise à jour */
+.last-update {
+    font-size: 0.9em;
+    color: #00cc00;
+    margin-top: 15px;
+    text-align: right;
+    font-style: italic;
+}
+
+/* Barre de défilement personnalisée pour la section régionale */
+.regional-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.regional-scrollbar::-webkit-scrollbar-track {
+    background: rgba(0, 50, 0, 0.3);
+    border-radius: 4px;
+}
+
+.regional-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 0, 0.5);
+    border-radius: 4px;
+    border: 1px solid rgba(0, 100, 0, 0.5);
+}
+
+.regional-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 255, 0, 0.7);
+}
+
+.live-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #f00;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+    margin-right: 8px;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}

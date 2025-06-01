@@ -1,0 +1,34 @@
+<!-- Main Structure -->
+<div class="space-y-12">
+    <!-- Economic Overview -->
+    <div class="space-y-8">
+        <h2 class="text-4xl font-bold text-green-500 mb-4 font-['Black Ops One']">ECONOMIC OVERVIEW</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {% include 'components/indicators.html' %}
+            {% include 'components/data_sources.html' %}
+            {% include 'components/sectors.html' %}
+        </div>
+    </div>
+
+    <!-- Regional & Trade -->
+    <div class="space-y-8">
+        <h2 class="text-4xl font-bold text-green-500 mb-4 font-['Black Ops One']">REGIONAL & TRADE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="md:col-span-2">
+                {% include 'components/regional.html' %}
+            </div>
+            <div class="md:col-span-1">
+                {% include 'components/trade.html' %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Financial & Architecture -->
+    <div class="space-y-8">
+        <h2 class="text-4xl font-bold text-green-500 mb-4 font-['Black Ops One']">FINANCIAL & ARCHITECTURE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {% include 'components/financial.html' %}
+            {% include 'components/architecture.html' %}
+        </div>
+    </div>
+</div>

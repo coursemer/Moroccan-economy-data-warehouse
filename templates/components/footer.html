@@ -1,0 +1,24 @@
+<!-- Footer -->
+<footer class="terminal p-6 text-center relative">
+    <div class="scanline"></div>
+    <p class="text-green-400 mb-4 font-['VT323']">THIS DATA WAS OBTAINED THROUGH UNAUTHORIZED SCRAPING</p>
+    <p class="text-green-300 mb-2 font-['VT323']">POWERED BY PUNK ETHICS AND LIVE DATA FEEDS</p>
+    <p class="text-green-300 mb-4 font-['VT323']">Auto-refresh every 5 minutes | Last update: {{ last_update }}</p>
+    <p class="text-green-200 text-sm font-['VT323']">NEXT DATA REFRESH IN {{ remaining_seconds }} SECONDS...</p>
+    <div class="flex justify-center gap-6 mt-4">
+        <a href="/api/data" class="text-green-400 hover:text-green-200 transition-colors">
+            <i class="fas fa-database text-2xl" title="Raw API Data"></i>
+        </a>
+        <a href="/refresh" class="text-green-400 hover:text-green-200 transition-colors">
+            <i class="fas fa-sync-alt text-2xl" title="Force Refresh"></i>
+        </a>
+        <a href="/download" class="text-green-400 hover:text-green-200 transition-colors">
+            <i class="fas fa-download text-2xl" title="Download Data"></i>
+        </a>
+        <a href="/graphs" class="text-green-400 hover:text-green-200 transition-colors">
+            <i class="fas fa-chart-line text-2xl" title="View Graphs"></i>
+        </a>
+    </div>
+    <p class="text-green-500 mt-6 font-['VT323']">EMERSON & MARIMAR - LIVE ECONOMIC INTELLIGENCE</p>
+    <p class="text-green-700 text-sm font-['VT323']" id="countdown">NEXT DATA REFRESH IN <span id="timer">300</span> SECONDS...</p>
+</footer>

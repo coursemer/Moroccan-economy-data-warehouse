@@ -1,0 +1,26 @@
+<div class="terminal p-6 mb-8 relative">
+    <div class="scanline"></div>
+    <h2 class="text-2xl font-bold text-green-500 mb-4 font-['Black Ops One']">LIVE ECONOMIC INDICATORS</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="p-3 border border-green-500">
+             <h3 class="text-lg text-green-300">PIB</h3>
+             <p class="text-3xl text-green-400 font-bold">{{ "%.1f"|format(data.world_bank.gdp) }} M$</p>
+             <p class="text-green-200 text-sm">Banque Mondiale</p>
+        </div>
+        <div class="p-3 border border-green-500">
+             <h3 class="text-lg text-green-300">Inflation</h3>
+             <p class="text-3xl text-red-400 font-bold">{{ "%.1f"|format(data.world_bank.inflation) }}%</p>
+             <p class="text-green-200 text-sm">Banque Mondiale</p>
+        </div>
+        <div class="p-3 border border-green-500">
+             <h3 class="text-lg text-green-300">Chômage</h3>
+             <p class="text-3xl text-yellow-400 font-bold">{{ "%.1f"|format(data.world_bank.unemployment) }}%</p>
+             <p class="text-green-200 text-sm">Banque Mondiale</p>
+        </div>
+        <div class="p-3 border border-green-500">
+             <h3 class="text-lg text-green-300">Balance commerciale</h3>
+             <p class="text-3xl text-green-400 font-bold">{{ "%.1f"|format(data.world_bank.trade_balance) }} M$</p>
+             <p class="text-green-200 text-sm">Banque Mondiale</p>
+        </div>
+    </div>
+</div>

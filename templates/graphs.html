@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Data Visualizations - PUNK ECONOMIC WAREHOUSE LEAK{% endblock %}
+
+{% block content %}
+    <h2 class="text-3xl font-bold text-green-500 mb-8 text-center font-['Black Ops One']">DATA VISUALIZATIONS</h2>
+
+    <!-- GDP Growth Line Chart -->
+    <div class="terminal p-6 mb-8 relative">
+        <canvas id="gdpChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Sector Contribution Pie Chart -->
+    <div class="terminal p-6 mb-8 relative">
+        <canvas id="sectorChart" width="400" height="200"></canvas>
+    </div>
+
+    <!-- Trade Balance Bar Chart -->
+    <div class="terminal p-6 mb-8 relative">
+        <canvas id="tradeChart" width="400" height="200"></canvas>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js "></script>
+<script src="{{ url_for('static', filename='js/chart.js') }}"></script>
+{% endblock %}

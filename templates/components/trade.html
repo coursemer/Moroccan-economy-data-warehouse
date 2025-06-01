@@ -1,0 +1,38 @@
+<!-- Foreign Investment Data -->
+<div class="terminal p-6 mb-8 relative">
+    <div class="scanline"></div>
+    <h2 class="text-2xl font-bold text-green-500 mb-4 font-['Black Ops One']">INVESTISSEMENTS ÉTRANGERS</h2>
+    <div class="space-y-4">
+        <div class="p-4 border border-green-500">
+            <h3 class="text-xl text-green-300 mb-3">INVESTISSEMENTS DIRECTS ÉTRANGERS</h3>
+            <p class="text-3xl text-green-400 font-bold mb-2">${{ "%.1f"|format(data.world_bank.fdi/1000) }}B</p>
+            <p class="text-green-200 mb-3">Total annuel</p>
+            <h4 class="text-green-300 mb-2">Secteurs principaux:</h4>
+            <ul class="list-disc list-inside text-green-200 text-sm">
+                <li>Automobile</li>
+                <li>Aéronautique</li>
+                <li>Électronique</li>
+                <li>Textile</li>
+            </ul>
+        </div>
+
+        <div class="p-4 border border-green-500">
+            <h3 class="text-xl text-green-300 mb-3">BALANCE COMMERCIALE</h3>
+            <div class="space-y-2">
+                <div class="flex justify-between">
+                    <span class="text-green-200">Solde actuel:</span>
+                    <span class="text-red-400 font-bold">${{ "%.1f"|format(data.world_bank.trade_balance/1000) }}B</span>
+                </div>
+                <div class="relative">
+                    <div class="bg-green-500 h-4 rounded">
+                        <div class="bg-yellow-500 h-4 rounded" style="width: {{ ((data.world_bank.fdi / (data.world_bank.trade_balance|abs)) * 100)|round }}%"></div>
+                    </div>
+                </div>
+                <div class="flex justify-between text-green-200">
+                    <span>IDE</span>
+                    <span>{{ "%.1f"|format((data.world_bank.fdi / (data.world_bank.trade_balance|abs)) * 100) }}%</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

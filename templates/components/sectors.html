@@ -1,0 +1,82 @@
+<!-- Sectoral Contribution -->
+<div class="terminal p-6 mb-8 relative">
+    <div class="scanline"></div>
+    <h2 class="text-2xl font-bold text-green-500 mb-4 font-['Black Ops One']">CONTRIBUTION SECTORIELLE</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Données sectorielles -->
+        {% if data.mef_sectors %}
+        {% for sector, sector_data in data.mef_sectors.items() %}
+        <div class="p-4 border border-green-500">
+            <h3 class="text-lg text-green-300 mb-2">{{ sector.upper() }}</h3>
+            <div class="space-y-4">
+                {% if sector_data.contribution %}
+                <div class="flex justify-between items-center">
+                    <span class="text-green-200">Contribution</span>
+                    <span class="text-3xl text-green-400 font-bold">{{ sector_data.contribution.get("2023", 0) }}%</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-green-200">Évolution</span>
+                    <span class="text-green-300">{{ "%.1f"|format(sector_data.contribution.get("2023", 0) - sector_data.contribution.get("2022", 0)) }}%</span>
+                </div>
+                <div class="w-full bg-green-500 h-2 rounded">
+                    <div class="bg-yellow-500 h-2 rounded" style="width: {{ sector_data.contribution.get("2023", 0) }}%"></div>
+                </div>
+                {% endif %}
+                
+                {% if sector_data.sub_sectors %}
+                <h4 class="text-green-300 mt-4">Sous-secteurs</h4>
+                <div class="space-y-2">
+                    {% for sub_sector, sub_data in sector_data.sub_sectors.items() %}
+                    <div class="flex justify-between">
+                        <span class="text-green-200">{{ sub_sector }}</span>
+                        <span class="text-green-300">{{ sub_data.get("2023", 0) }}%</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% if sector_data.key_indicators %}
+                <h4 class="text-green-300 mt-4">Indicateurs clés</h4>
+                <div class="space-y-2">
+                    {% for indicator, ind_data in sector_data.key_indicators.items() %}
+                    <div class="flex justify-between">
+                        <span class="text-green-200">{{ indicator }}</span>
+                        <span class="text-green-300">{{ ind_data.get("2023", 0) }} {{ ind_data.unit }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <!-- Données régionales -->
+        {% if data.regions %}
+        <div class="p-4 border border-green-500">
+            <h3 class="text-lg text-green-300 mb-4">CONTRIBUTION RÉGIONALE</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {% for region, region_data in data.regions.items() %}
+                <div class="p-3 border border-green-400 rounded">
+                    <h4 class="text-green-200 mb-2">{{ region }}</h4>
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-green-200">Contribution</span>
+                        <span class="text-3xl text-green-400 font-bold">{{ region_data.contribution.get("2023", 0) }}%</span>
+                    </div>
+                    <div class="w-full bg-green-500 h-2 rounded">
+                        <div class="bg-yellow-500 h-2 rounded" style="width: {{ region_data.contribution.get("2023", 0) }}%"></div>
+                    </div>
+                    <div class="text-green-200 mt-2">
+                        <span>Évolution: {{ "%.1f"|format(region_data.contribution.get("2023", 0) - region_data.contribution.get("2022", 0)) }}%</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="p-4 text-green-200">
+            <p>Aucune donnée régionale disponible</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
